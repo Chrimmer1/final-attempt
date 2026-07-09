@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Seed Breakout Map — Glasswing Ventures</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+  :root{
+    --paper:#F5F7F6;--card:#FFFFFF;--ink:#122019;--ink-soft:#566B62;--line:#E1E8E5;
+    --teal:#0F766E;--amber:#B4862B;--red:#C2410C;--violet:#6D5FA6;--blue:#2563A6;--rose:#B23A6B;--olive:#5C7A29;--green:#15803D;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:var(--paper);color:var(--ink);line-height:1.55;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1060px;margin:0 auto;padding:32px 24px 64px}
+  header{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:16px;padding-bottom:20px;border-bottom:2px solid var(--ink)}
+  .eyebrow{font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--teal)}
+  h1{font-size:34px;font-weight:800;letter-spacing:-.02em;line-height:1.1;margin-top:4px}
+  .tagline{font-size:14px;color:var(--ink-soft);margin-top:6px;max-width:70ch}
+  .controls{display:flex;flex-direction:column;align-items:flex-end;gap:8px}
+  .asof{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--ink-soft)}
+  .dot{width:9px;height:9px;border-radius:50%;background:var(--teal);animation:pulse 2s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(15,118,110,.45)}70%{box-shadow:0 0 0 8px rgba(15,118,110,0)}100%{box-shadow:0 0 0 0 rgba(15,118,110,0)}}
+  .refresh{display:inline-flex;align-items:center;gap:8px;background:var(--teal);color:#fff;border:none;border-radius:9px;padding:11px 18px;font-size:14px;font-weight:600;cursor:pointer;transition:opacity .15s}
+  .refresh:hover{opacity:.9}.refresh:disabled{opacity:.55;cursor:default}
+  .spin{width:15px;height:15px;border:2px solid rgba(255,255,255,.4);border-top-color:#fff;border-radius:50%;animation:rot .7s linear infinite}
+  @keyframes rot{to{transform:rotate(360deg)}}
+  .insight{background:var(--ink);color:#fff;border-radius:14px;padding:22px 26px;margin:24px 0 14px}
+  .insight .eyebrow{color:#8FB3AA}
+  .insight p{font-size:17px;margin-top:8px;max-width:84ch;min-height:22px}
+  .delta{display:none;background:#E7F0EE;border:1px solid #BEDDD6;color:#0B4A44;border-radius:12px;padding:12px 16px;font-size:13.5px;margin-bottom:22px}
+  .delta b{color:#083733}
+  .statbar{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:22px}
+  .stat{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 18px;flex:1;min-width:150px}
+  .stat .n{font-size:26px;font-weight:800;letter-spacing:-.01em}
+  .stat .l{font-size:12px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.04em;margin-top:2px}
+  .top{display:grid;grid-template-columns:400px 1fr;gap:20px;align-items:start;margin-bottom:12px}
+  .panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px}
+  .panel h3{font-size:16px;font-weight:700}
+  .panel .sub{font-size:12.5px;color:var(--ink-soft);margin-top:2px;margin-bottom:8px}
+  .chart-box{position:relative;height:300px}
+  .center-total{position:absolute;top:46%;left:0;right:0;text-align:center;transform:translateY(-50%);pointer-events:none}
+  .center-total .ct-n{font-size:38px;font-weight:800;line-height:1}
+  .center-total .ct-l{font-size:11px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.06em}
+  .legend{display:flex;flex-direction:column;gap:2px}
+  .leg-row{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:9px 0;border-bottom:1px solid var(--line);cursor:pointer}
+  .leg-row:last-child{border-bottom:none}
+  .leg-left{display:flex;align-items:center;gap:9px;font-size:13.5px;font-weight:600}
+  .swatch{width:11px;height:11px;border-radius:3px;flex:none}
+  .leg-right{font-family:ui-monospace,monospace;font-size:12px;color:var(--ink-soft);white-space:nowrap}
+  .leg-row.off{opacity:.4}
+  .cat{margin-top:22px}
+  .cat-head{display:flex;align-items:center;gap:10px;margin:0 0 10px}
+  .cat-head .cdot{width:12px;height:12px;border-radius:4px}
+  .cat-head h4{font-size:15px;font-weight:800}
+  .cat-head .cmeta{font-family:ui-monospace,monospace;font-size:12px;color:var(--ink-soft)}
+  .co-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .co{background:var(--card);border:1px solid var(--line);border-radius:11px;padding:13px 15px}
+  .co .top-line{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+  .co .nm{font-weight:700;font-size:14.5px}
+  .co .star{color:var(--amber);font-size:13px}
+  .co .amt{font-family:ui-monospace,monospace;font-weight:700;font-size:13px;white-space:nowrap}
+  .co .wt{font-size:12.5px;color:var(--ink-soft);margin-top:3px}
+  .co .vs{font-size:11px;color:var(--ink-soft);margin-top:6px;display:flex;justify-content:space-between;gap:8px}
+  .skeleton{color:var(--ink-soft);font-style:italic}
+  .errbox{background:#FBEAE1;border:1px solid #EBC3AE;color:var(--red);padding:12px 15px;border-radius:9px;font-size:13.5px;margin:10px 0;display:none}
+  footer{font-size:12px;color:var(--ink-soft);border-top:1px solid var(--line);padding-top:18px;line-height:1.7;margin-top:30px}
+  footer .note{background:#F4F1E8;border:1px solid #E3DcC6;color:#5A4E2E;padding:11px 15px;border-radius:8px;margin-bottom:12px;font-size:12.5px}
+  @media(max-width:820px){.top{grid-template-columns:1fr}.co-grid{grid-template-columns:1fr}h1{font-size:26px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div>
+      <div class="eyebrow">Glasswing Ventures · Internal</div>
+      <h1>Seed Breakout Map</h1>
+      <div class="tagline">AI companies that started at seed and broke out ($100M+ raised) in the last year, grouped by what they do. Updated automatically once a day — the numbers move only when the market does.</div>
+    </div>
+    <div class="controls">
+      <button class="refresh" id="refreshBtn"><span id="btnLabel">Reload</span></button>
+      <div class="asof"><span class="dot"></span> <span id="asof">loading…</span></div>
+    </div>
+  </header>
+
+  <div class="errbox" id="errbox"></div>
+
+  <div class="insight">
+    <div class="eyebrow">The signal — derived from the data below</div>
+    <p id="insight" class="skeleton">Loading the latest saved map…</p>
+  </div>
+
+  <div class="delta" id="delta"></div>
+
+  <div class="statbar" id="statbar"></div>
+
+  <div class="top">
+    <div class="panel">
+      <h3>Breakouts by category</h3>
+      <div class="sub">Count of $100M+ seed-origin AI companies</div>
+      <div class="chart-box">
+        <canvas id="pie"></canvas>
+        <div class="center-total"><div class="ct-n" id="ctN">–</div><div class="ct-l">breakouts</div></div>
+      </div>
+    </div>
+    <div class="panel">
+      <h3>The mix</h3>
+      <div class="sub">Click a row to toggle it in the chart</div>
+      <div class="legend" id="legend"><div class="skeleton">Loading…</div></div>
+    </div>
+  </div>
+
+  <div class="panel" id="backersPanel" style="margin-top:20px"><h3>Most active early backers</h3><div class="sub">Seed / early investors that recur across these breakouts — who Glasswing competes and co-invests with</div><div id="backers"><div class="skeleton">Loading…</div></div></div>
+
+  <div id="cats"></div>
+
+  <footer>
+    <div class="note"><strong>How it stays current:</strong> A scheduled job (GitHub Actions) searches the market once a day, saves the result to a data file, and this page displays that file. So the numbers hold still between daily updates and change only when the market changes — clicking Reload re-reads the saved file, it does not re-guess. <strong>Method:</strong> AI-core companies that took a seed round and have since raised $100M+ within ~12 months (US-weighted). Categories, backers, and timing are model-surfaced from public reporting — verify specifics in PitchBook/Affinity before acting. Point the job at Glasswing's PitchBook connector for audited data.</div>
+    Updated daily by an automated job. Prototype for internal use.
+  </footer>
+
+</div>
+
+<script>
+const $ = id => document.getElementById(id);
+function setLoading(on){ $('refreshBtn').disabled=on; $('btnLabel').innerHTML = on ? '<span class="spin"></span> Loading…' : 'Reload'; }
+function showError(m){ const e=$('errbox'); e.textContent=m; e.style.display='block'; }
+function clearError(){ $('errbox').style.display='none'; }
+
+const GROUPS = ["AI Coding & Dev Tools","AI Customer Service & Agents","Cybersecurity","AI Infrastructure","Vertical AI (Legal/Health/Finance)","Enterprise Search & Ops","Other AI"];
+const COLORS = {"AI Coding & Dev Tools":"#2563A6","AI Customer Service & Agents":"#0F766E","Cybersecurity":"#C2410C","AI Infrastructure":"#6D5FA6","Vertical AI (Legal/Health/Finance)":"#B23A6B","Enterprise Search & Ops":"#B4862B","Other AI":"#5C7A29"};
+let pie=null, ALL=[], HIDDEN=new Set(), DELTAS=null;
+
+function fmtB(m){ return m>=1000 ? '$'+(m/1000).toFixed(1).replace(/\.0$/,'')+'B' : '$'+Math.round(m)+'M'; }
+function ytb(c){ const s=+c.seed_year,b=+c.breakout_year; if(s&&b&&b>=s&&(b-s)<=15) return {years:b-s,label:`seed ’${String(s).slice(2)} → ’${String(b).slice(2)}`}; return null; }
+
+function renderInsight(){
+  const gs=GROUPS.filter(g=>ALL.some(c=>c.group===g)).map(g=>({g,n:ALL.filter(c=>c.group===g).length,cap:ALL.filter(c=>c.group===g).reduce((s,c)=>s+(+c.total_m||0),0)})).sort((a,b)=>b.n-a.n);
+  if(!gs.length){ $('insight').textContent='No breakouts in the saved file yet.'; return; }
+  const top=gs[0],second=gs[1],richest=[...gs].sort((a,b)=>b.cap-a.cap)[0];
+  let t=`Over the last year, ${top.g} produced the most seed-origin AI breakouts (${top.n} of ${ALL.length}).`;
+  if(second) t+=` ${second.g} is next with ${second.n}.`;
+  if(richest&&richest.g!==top.g) t+=` The most capital has flowed to ${richest.g} (${fmtB(richest.cap)}) — fewer names, bigger cheques.`;
+  const bt={}; ALL.forEach(c=>(c.seed_backers||[]).forEach(b=>{const k=(b||'').trim(); if(k)bt[k]=(bt[k]||0)+1;}));
+  const tb=Object.entries(bt).sort((a,b)=>b[1]-a[1])[0];
+  if(tb&&tb[1]>=2) t+=` One name recurs on the early cap tables: ${tb[0]} backed ${tb[1]} of these at seed.`;
+  t+=` For a first-cheque firm, these are the lanes where seed AI has been converting into scale.`;
+  $('insight').classList.remove('skeleton'); $('insight').textContent=t;
+}
+
+function renderDelta(){
+  if(!DELTAS){ $('delta').style.display='none'; return; }
+  const d=DELTAS; const since=d.since?new Date(d.since).toLocaleDateString([], {month:'short',day:'numeric'}):'last update';
+  const bits=[];
+  bits.push(`<b>${d.companies>=0?'+':''}${d.companies}</b> companies`);
+  bits.push(`<b>${d.unicorns>=0?'+':''}${d.unicorns}</b> unicorns`);
+  let html=`Since ${since}: ${bits.join(' · ')}`;
+  if(d.new_names&&d.new_names.length) html+=` · new: ${d.new_names.join(', ')}`;
+  $('delta').innerHTML=html; $('delta').style.display='block';
+}
+
+function renderStats(){
+  const total=ALL.length, unis=ALL.filter(c=>c.unicorn).length, cap=ALL.reduce((s,c)=>s+(+c.total_m||0),0), groups=GROUPS.filter(g=>ALL.some(c=>c.group===g)).length;
+  $('statbar').innerHTML=`
+    <div class="stat"><div class="n">${total}</div><div class="l">Seed-origin breakouts</div></div>
+    <div class="stat"><div class="n">${unis}</div><div class="l">Now unicorns ★</div></div>
+    <div class="stat"><div class="n">${fmtB(cap)}</div><div class="l">Total raised</div></div>
+    <div class="stat"><div class="n">${groups}</div><div class="l">Categories</div></div>`;
+}
+
+function renderBackers(){
+  const t={}; ALL.forEach(c=>(c.seed_backers||[]).forEach(b=>{const k=(b||'').trim(); if(k)t[k]=(t[k]||0)+1;}));
+  const top=Object.entries(t).sort((a,b)=>b[1]-a[1]).slice(0,8);
+  if(!top.length){ $('backers').innerHTML='<div class="skeleton">No backer data in this file.</div>'; return; }
+  $('backers').innerHTML=top.map(([name,n])=>`<span style="display:inline-flex;align-items:center;gap:7px;background:${n>1?'#E7F0EE':'#F2F6F5'};border:1px solid ${n>1?'#BEDDD6':'var(--line)'};border-radius:20px;padding:6px 12px;margin:0 8px 8px 0;font-size:13px;font-weight:600">${name}<span style="background:var(--teal);color:#fff;border-radius:10px;padding:1px 8px;font-size:11px;font-family:ui-monospace,monospace">${n}</span></span>`).join('');
+}
+
+function render(){
+  const groups=GROUPS.filter(g=>ALL.some(c=>c.group===g));
+  const total=ALL.filter(c=>!HIDDEN.has(c.group)).length; $('ctN').textContent=total;
+  if(pie) pie.destroy();
+  pie=new Chart($('pie'),{type:'doughnut',
+    data:{labels:groups,datasets:[{data:groups.map(g=>ALL.filter(c=>c.group===g&&!HIDDEN.has(g)).length),backgroundColor:groups.map(g=>COLORS[g]),borderColor:'#fff',borderWidth:2}]},
+    options:{responsive:true,maintainAspectRatio:false,cutout:'64%',plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>' '+c.raw+' companies'}}}}});
+  $('legend').innerHTML=groups.map(g=>{const list=ALL.filter(c=>c.group===g);const cap=list.reduce((s,c)=>s+(+c.total_m||0),0);return `<div class="leg-row ${HIDDEN.has(g)?'off':''}" data-g="${g}"><div class="leg-left"><span class="swatch" style="background:${COLORS[g]}"></span>${g}</div><div class="leg-right">${list.length} · ${fmtB(cap)}</div></div>`;}).join('');
+  document.querySelectorAll('.leg-row').forEach(r=>r.onclick=()=>{const g=r.dataset.g;HIDDEN.has(g)?HIDDEN.delete(g):HIDDEN.add(g);render();});
+  $('cats').innerHTML=groups.map(g=>{
+    const list=ALL.filter(c=>c.group===g).sort((a,b)=>(+b.total_m||0)-(+a.total_m||0));
+    const cap=list.reduce((s,c)=>s+(+c.total_m||0),0), unis=list.filter(c=>c.unicorn).length;
+    const ys=list.map(ytb).filter(Boolean).map(x=>x.years), avg=ys.length?(ys.reduce((a,b)=>a+b,0)/ys.length):null;
+    return `<div class="cat"><div class="cat-head"><span class="cdot" style="background:${COLORS[g]}"></span><h4>${g}</h4><span class="cmeta">${list.length} breakouts · ${fmtB(cap)} raised${avg?` · ~${avg.toFixed(1)}y to breakout`:''}${unis?` · ${unis} ★`:''}</span></div>
+      <div class="co-grid">${list.map(c=>{const t=ytb(c);const bk=(c.seed_backers||[]).slice(0,3).join(', ');
+        return `<div class="co"><div class="top-line"><span class="nm">${c.name}${c.unicorn?' <span class="star">★</span>':''}</span><span class="amt">${c.total_raised||fmtB(c.total_m)}</span></div>
+          <div class="wt">${c.what||''}</div>
+          <div style="font-size:12px;color:#2c3f38;margin-top:8px;line-height:1.5">${bk?`<div><b>Backed early:</b> ${bk}</div>`:''}${t?`<div><b>Seed → $100M:</b> ${t.years} yr${t.years===1?'':'s'} <span style="color:var(--ink-soft)">(${t.label})</span></div>`:''}</div>
+          <div class="vs"><span>Valuation: ${c.valuation||'n/a'}</span><span>${c.source||''}</span></div></div>`;
+      }).join('')}</div></div>`;
+  }).join('');
+}
+
+async function load(){
+  setLoading(true); clearError();
+  try{
+    const res=await fetch('./data/market_data.json?t='+Date.now());
+    if(!res.ok) throw new Error('no file');
+    const d=await res.json();
+    ALL=d.companies||[]; DELTAS=d.deltas||null; HIDDEN=new Set();
+    if(ALL.length){
+      renderInsight(); renderDelta(); renderStats(); renderBackers(); render();
+      const when=d.generated_at?new Date(d.generated_at):new Date();
+      $('asof').textContent='Updated '+when.toLocaleDateString([], {month:'short',day:'numeric',year:'numeric'});
+    } else { showError('The saved data file has no companies yet. Run the "Update market data" job once in the Actions tab, then reload.'); }
+  }catch(e){
+    showError('No saved data yet. In your repo, open the Actions tab, run "Update market data" once, wait for it to finish, then reload this page.');
+    $('asof').textContent='no data yet';
+  }
+  setLoading(false);
+}
+
+$('refreshBtn').addEventListener('click', load);
+load();
+</script>
+</body>
+</html>
