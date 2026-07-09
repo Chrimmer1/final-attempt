@@ -18,7 +18,7 @@ REQUIRES
   Optional: RADAR_MODEL (defaults to claude-sonnet-5).
 """
 
-import os, re, json, time, urllib.request
+import os, re, json, time, urllib.request, urllib.error
 from datetime import datetime, timezone
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -44,20 +44,35 @@ For each, also give its early/seed backers (1-3 names, the investors who got in 
 FOCUS THIS BATCH ON: {focus}.
 Return ONLY JSON, no markdown:
 {{"companies":[{{"name":"","group":"one from the list","what":"under 8 words","total_raised":"$1.2B","total_m":1200,"valuation":"$3B or n/a","unicorn":true,"seed_backers":["Fund A"],"seed_year":2022,"breakout_year":2026,"source":"publication + year"}}]}}
-Give up to 7 companies, most notable first. Keep every string short."""
+Give up to 7 companies, most notable first. Keep every string short.
+Output ONLY the JSON object. No markdown, no code fences, no text before or after it."""
 
 
 def parse_companies(text):
-    """Tolerant: salvage complete company objects even if the reply is cut off."""
-    try:
-        s = text.index("{"); e = text.rindex("}")
-        o = json.loads(text[s:e + 1])
-        if "companies" in o:
-            return o["companies"]
-    except Exception:
-        pass
+    """Very tolerant: handles code fences, extra prose, or a cut-off reply."""
+    if not text:
+        return []
+    # 1) strip markdown code fences if present
+    cleaned = re.sub(r"```(?:json)?", "", text).strip()
+    # 2) try to parse the whole object
+    for candidate in (cleaned, text):
+        try:
+            s = candidate.index("{"); e = candidate.rindex("}")
+            o = json.loads(candidate[s:e + 1])
+            if isinstance(o, dict) and "companies" in o:
+                return o["companies"]
+        except Exception:
+            pass
+    # 3) try to grab just the companies array
+    m = re.search(r'"companies"\s*:\s*(\[.*\])', cleaned, re.S)
+    if m:
+        try:
+            return json.loads(m.group(1))
+        except Exception:
+            pass
+    # 4) last resort: salvage each complete {...} object that has a "name"
     out = []
-    for m in re.finditer(r'\{[^{}]*"name"[^{}]*\}', text):
+    for m in re.finditer(r'\{[^{}]*"name"[^{}]*\}', cleaned, re.S):
         try:
             out.append(json.loads(m.group(0)))
         except Exception:
@@ -70,27 +85,46 @@ def ask_claude(focus, retries=3):
     model = os.environ.get("RADAR_MODEL", "claude-sonnet-5")
     payload = {
         "model": model,
-        "max_tokens": 1500,
+        "max_tokens": 2000,
         "messages": [{"role": "user", "content": prompt(focus)}],
-        "tools": [{"type": "web_search_20250305", "name": "web_search"}],
     }
-    req = urllib.request.Request(
-        "https://api.anthropic.com/v1/messages",
-        data=json.dumps(payload).encode(),
-        headers={"content-type": "application/json", "x-api-key": key,
-                 "anthropic-version": "2023-06-01"},
-    )
+    # Web search on by default; set RADAR_WEB_SEARCH=0 to disable if the account lacks it.
+    if os.environ.get("RADAR_WEB_SEARCH", "1") != "0":
+        payload["tools"] = [{"type": "web_search_20250305", "name": "web_search"}]
+
     last = None
     for i in range(retries):
         try:
-            with urllib.request.urlopen(req, timeout=120) as r:
+            req = urllib.request.Request(
+                "https://api.anthropic.com/v1/messages",
+                data=json.dumps(payload).encode(),
+                headers={"content-type": "application/json", "x-api-key": key,
+                         "anthropic-version": "2023-06-01"},
+            )
+            with urllib.request.urlopen(req, timeout=180) as r:
                 data = json.load(r)
             text = "".join(b.get("text", "") for b in data.get("content", []) if b.get("type") == "text")
-            return parse_companies(text)
-        except Exception as e:
-            last = e
+            companies = parse_companies(text)
+            if not companies:
+                # show what came back so an empty result is never a mystery
+                print("  got a reply but parsed 0 companies. stop_reason:",
+                      data.get("stop_reason"), "| raw text (first 600 chars):")
+                print("  " + (text[:600].replace("\n", " ") or "<no text block in response>"))
+            return companies
+        except urllib.error.HTTPError as e:
+            body = ""
+            try:
+                body = e.read().decode("utf-8", "replace")[:500]
+            except Exception:
+                pass
+            last = f"HTTP {e.code}: {body}"
+            print("  API error:", last)
             time.sleep(5 * (i + 1))
-    print("  batch failed:", last)
+        except Exception as e:
+            last = str(e)
+            print("  request error:", last)
+            time.sleep(5 * (i + 1))
+    print("  batch failed after retries:", last)
     return []
 
 
