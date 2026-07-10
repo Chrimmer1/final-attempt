@@ -1,179 +1,139 @@
 {
-  "generated_at": "2026-07-10T17:32:24.827380+00:00",
+  "generated_at": "2026-07-10T18:11:08.755875+00:00",
   "companies": [
     {
-      "name": "Cursor (Anysphere)",
-      "group": "AI Coding & Dev Tools",
-      "what": "AI-powered code editor and assistant",
-      "total_raised": "$1B+",
-      "total_m": 1000,
-      "valuation": "$9.9B",
-      "unicorn": true,
+      "name": "Asepha",
+      "group": "Clinical & Healthcare Workflow Automation",
+      "what": "agentic pharmacy workflow automation",
+      "total_raised": "n/a",
+      "total_m": 0,
+      "valuation": "n/a",
+      "unicorn": false,
       "seed_backers": [
-        "OpenAI Startup Fund",
-        "South Park Commons",
-        "Neo"
+        "Glasswing Ventures"
+      ],
+      "seed_year": 2024,
+      "breakout_year": 2026,
+      "source": "Glasswing portfolio, 2026",
+      "glasswing": true
+    },
+    {
+      "name": "Cydelphi",
+      "group": "AI Security Operations (SOC & Threat Response)",
+      "what": "AI-native digital forensics and incident response",
+      "total_raised": "n/a",
+      "total_m": 0,
+      "valuation": "n/a",
+      "unicorn": false,
+      "seed_backers": [
+        "Glasswing Ventures"
+      ],
+      "seed_year": 2025,
+      "breakout_year": 2026,
+      "source": "Glasswing portfolio, 2026",
+      "glasswing": true
+    },
+    {
+      "name": "Lio (askLio)",
+      "group": "AI Agents for Business Operations",
+      "what": "AI agents execute enterprise procurement workflows",
+      "total_raised": "$33M",
+      "total_m": 33,
+      "valuation": "n/a",
+      "unicorn": false,
+      "seed_backers": [
+        "Y Combinator",
+        "SV Angels",
+        "Andreessen Horowitz"
+      ],
+      "seed_year": 2023,
+      "breakout_year": 2026,
+      "glasswing": false,
+      "source": "TechCrunch 2026; IndexBox 2026"
+    },
+    {
+      "name": "Fazeshift",
+      "group": "AI Agents for Business Operations",
+      "what": "AI agents automate accounts receivable, collections",
+      "total_raised": "$22M",
+      "total_m": 22,
+      "valuation": "n/a",
+      "unicorn": false,
+      "seed_backers": [
+        "Gradient Ventures",
+        "Y Combinator",
+        "F-Prime"
+      ],
+      "seed_year": 2025,
+      "breakout_year": 2026,
+      "glasswing": false,
+      "source": "Businesswire 2026; Accounting VC Substack 2026"
+    },
+    {
+      "name": "Freed",
+      "group": "Clinical & Healthcare Workflow Automation",
+      "what": "AI ambient scribe for independent clinicians",
+      "total_raised": "$30M",
+      "total_m": 30,
+      "valuation": "n/a",
+      "unicorn": false,
+      "seed_backers": [
+        "Sequoia Capital",
+        "Scale Venture Partners"
       ],
       "seed_year": 2022,
       "breakout_year": 2025,
-      "source": "TechCrunch 2025"
+      "glasswing": false,
+      "source": "CNBC, 2025"
     },
     {
-      "name": "Cognition Labs",
-      "group": "AI Coding & Dev Tools",
-      "what": "Autonomous AI software engineer agent Devin",
-      "total_raised": "$675M",
-      "total_m": 675,
-      "valuation": "$10.2B",
-      "unicorn": true,
+      "name": "Ethermed",
+      "group": "Clinical & Healthcare Workflow Automation",
+      "what": "AI automates prior authorization for health systems",
+      "total_raised": "$15M",
+      "total_m": 15,
+      "valuation": "n/a",
+      "unicorn": false,
       "seed_backers": [
-        "Founders Fund",
-        "Elad Gil"
+        "Enfield Capital Partners",
+        "Blue Marlin Partners",
+        "Jumpstart Ventures"
       ],
-      "seed_year": 2023,
-      "breakout_year": 2025,
-      "source": "Bloomberg 2025"
+      "seed_year": 2024,
+      "breakout_year": 2026,
+      "glasswing": false,
+      "source": "EIN Presswire, 2026"
     },
     {
-      "name": "Chainguard",
-      "group": "Cybersecurity",
-      "what": "Secures open-source software supply chains",
-      "total_raised": "$356M",
-      "total_m": 356,
-      "valuation": "$3.5B",
-      "unicorn": true,
+      "name": "Enzo Health",
+      "group": "Clinical & Healthcare Workflow Automation",
+      "what": "AI platform automating home health care coordination",
+      "total_raised": "$26M",
+      "total_m": 26,
+      "valuation": "n/a",
+      "unicorn": false,
       "seed_backers": [
-        "Amplify Partners",
-        "Josh Buckley"
+        "Gradient",
+        "Tandem Ventures",
+        "Rigby Watts"
       ],
-      "seed_year": 2021,
-      "breakout_year": 2024,
-      "source": "TechCrunch 2024"
-    },
-    {
-      "name": "Together AI",
-      "group": "AI Infrastructure",
-      "what": "Cloud platform for open-source AI models",
-      "total_raised": "$305M",
-      "total_m": 305,
-      "valuation": "$3.3B",
-      "unicorn": true,
-      "seed_backers": [
-        "Lux Capital",
-        "Kleiner Perkins"
-      ],
-      "seed_year": 2022,
-      "breakout_year": 2024,
-      "source": "Forbes 2024"
-    },
-    {
-      "name": "Poolside AI",
-      "group": "AI Infrastructure",
-      "what": "Foundation models for software development",
-      "total_raised": "$654M",
-      "total_m": 654,
-      "valuation": "$3B",
-      "unicorn": true,
-      "seed_backers": [
-        "Susa Ventures",
-        "Redpoint Ventures"
-      ],
-      "seed_year": 2023,
-      "breakout_year": 2024,
-      "source": "The Information 2024"
-    },
-    {
-      "name": "Decagon",
-      "group": "AI Customer Service & Agents",
-      "what": "AI agents for customer support automation",
-      "total_raised": "$233M",
-      "total_m": 233,
-      "valuation": "$1.5B",
-      "unicorn": true,
-      "seed_backers": [
-        "Andreessen Horowitz",
-        "Accel"
-      ],
-      "seed_year": 2023,
-      "breakout_year": 2025,
-      "source": "TechCrunch 2025"
-    },
-    {
-      "name": "Crescendo",
-      "group": "AI Customer Service & Agents",
-      "what": "AI-human hybrid customer service platform",
-      "total_raised": "$153M",
-      "total_m": 153,
-      "valuation": "$1B",
-      "unicorn": true,
-      "seed_backers": [
-        "Bain Capital Ventures",
-        "Innovation Endeavors"
-      ],
-      "seed_year": 2022,
-      "breakout_year": 2025,
-      "source": "Forbes 2025"
-    },
-    {
-      "name": "OpenEvidence",
-      "group": "Vertical AI (Legal/Health/Finance)",
-      "what": "AI clinical answer engine for physicians",
-      "total_raised": "$265M",
-      "total_m": 265,
-      "valuation": "$3.5B",
-      "unicorn": true,
-      "seed_backers": [
-        "General Catalyst",
-        "Kleiner Perkins"
-      ],
-      "seed_year": 2023,
-      "breakout_year": 2025,
-      "source": "Axios 2025"
-    },
-    {
-      "name": "Harvey",
-      "group": "Vertical AI (Legal/Health/Finance)",
-      "what": "Generative AI platform for law firms",
-      "total_raised": "$500M",
-      "total_m": 500,
-      "valuation": "$5B",
-      "unicorn": true,
-      "seed_backers": [
-        "OpenAI Startup Fund",
-        "Sequoia Capital"
-      ],
-      "seed_year": 2022,
-      "breakout_year": 2024,
-      "source": "The Information 2025"
-    },
-    {
-      "name": "Clay",
-      "group": "Enterprise Search & Ops",
-      "what": "AI-driven sales and ops automation",
-      "total_raised": "$150M",
-      "total_m": 150,
-      "valuation": "$3.1B",
-      "unicorn": true,
-      "seed_backers": [
-        "Boldstart Ventures",
-        "Box Group"
-      ],
-      "seed_year": 2018,
-      "breakout_year": 2025,
-      "source": "TechCrunch 2025"
+      "seed_year": 2024,
+      "breakout_year": 2026,
+      "glasswing": false,
+      "source": "Home Health Care News, 2026"
     }
   ],
   "deltas": {
-    "since": "2026-07-09T14:12:11.799052+00:00",
-    "companies": 0,
-    "unicorns": 1,
+    "since": "2026-07-10T17:32:24.827380+00:00",
+    "companies": -3,
+    "unicorns": -10,
     "new_names": [
-      "Cognition Labs",
-      "Chainguard",
-      "Together AI",
-      "Crescendo",
-      "OpenEvidence",
-      "Clay"
+      "Asepha",
+      "Cydelphi",
+      "Lio (askLio)",
+      "Fazeshift",
+      "Freed",
+      "Ethermed"
     ]
   }
 }
