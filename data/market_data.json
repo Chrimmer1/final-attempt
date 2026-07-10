@@ -1,28 +1,29 @@
 {
-  "generated_at": "2026-07-09T14:12:11.799052+00:00",
+  "generated_at": "2026-07-10T17:32:24.827380+00:00",
   "companies": [
     {
       "name": "Cursor (Anysphere)",
       "group": "AI Coding & Dev Tools",
-      "what": "AI code editor, autocomplete & agents",
-      "total_raised": "$1.1B",
-      "total_m": 1100,
+      "what": "AI-powered code editor and assistant",
+      "total_raised": "$1B+",
+      "total_m": 1000,
       "valuation": "$9.9B",
       "unicorn": true,
       "seed_backers": [
         "OpenAI Startup Fund",
-        "South Park Commons"
+        "South Park Commons",
+        "Neo"
       ],
       "seed_year": 2022,
       "breakout_year": 2025,
       "source": "TechCrunch 2025"
     },
     {
-      "name": "Cognition AI",
+      "name": "Cognition Labs",
       "group": "AI Coding & Dev Tools",
-      "what": "Autonomous AI software engineer 'Devin'",
-      "total_raised": "$650M",
-      "total_m": 650,
+      "what": "Autonomous AI software engineer agent Devin",
+      "total_raised": "$675M",
+      "total_m": 675,
       "valuation": "$10.2B",
       "unicorn": true,
       "seed_backers": [
@@ -34,59 +35,59 @@
       "source": "Bloomberg 2025"
     },
     {
+      "name": "Chainguard",
+      "group": "Cybersecurity",
+      "what": "Secures open-source software supply chains",
+      "total_raised": "$356M",
+      "total_m": 356,
+      "valuation": "$3.5B",
+      "unicorn": true,
+      "seed_backers": [
+        "Amplify Partners",
+        "Josh Buckley"
+      ],
+      "seed_year": 2021,
+      "breakout_year": 2024,
+      "source": "TechCrunch 2024"
+    },
+    {
+      "name": "Together AI",
+      "group": "AI Infrastructure",
+      "what": "Cloud platform for open-source AI models",
+      "total_raised": "$305M",
+      "total_m": 305,
+      "valuation": "$3.3B",
+      "unicorn": true,
+      "seed_backers": [
+        "Lux Capital",
+        "Kleiner Perkins"
+      ],
+      "seed_year": 2022,
+      "breakout_year": 2024,
+      "source": "Forbes 2024"
+    },
+    {
       "name": "Poolside AI",
-      "group": "AI Coding & Dev Tools",
+      "group": "AI Infrastructure",
       "what": "Foundation models for software development",
-      "total_raised": "$626M",
-      "total_m": 626,
+      "total_raised": "$654M",
+      "total_m": 654,
       "valuation": "$3B",
       "unicorn": true,
       "seed_backers": [
-        "Redpoint Ventures",
-        "Felicis"
-      ],
-      "seed_year": 2023,
-      "breakout_year": 2025,
-      "source": "The Information 2025"
-    },
-    {
-      "name": "Cyberhaven",
-      "group": "Cybersecurity",
-      "what": "AI-driven data detection & response",
-      "total_raised": "$188M",
-      "total_m": 188,
-      "valuation": "$1B",
-      "unicorn": true,
-      "seed_backers": [
-        "Khosla Ventures",
+        "Susa Ventures",
         "Redpoint Ventures"
       ],
-      "seed_year": 2019,
-      "breakout_year": 2025,
-      "source": "Reuters 2025"
-    },
-    {
-      "name": "Baseten",
-      "group": "AI Infrastructure",
-      "what": "Managed inference platform for AI models",
-      "total_raised": "$200M",
-      "total_m": 200,
-      "valuation": "$2.15B",
-      "unicorn": true,
-      "seed_backers": [
-        "Base10 Partners",
-        "Spark Capital"
-      ],
-      "seed_year": 2019,
-      "breakout_year": 2025,
-      "source": "TechCrunch 2025"
+      "seed_year": 2023,
+      "breakout_year": 2024,
+      "source": "The Information 2024"
     },
     {
       "name": "Decagon",
       "group": "AI Customer Service & Agents",
-      "what": "AI customer support agent platform",
-      "total_raised": "$230M",
-      "total_m": 230,
+      "what": "AI agents for customer support automation",
+      "total_raised": "$233M",
+      "total_m": 233,
       "valuation": "$1.5B",
       "unicorn": true,
       "seed_backers": [
@@ -98,9 +99,41 @@
       "source": "TechCrunch 2025"
     },
     {
+      "name": "Crescendo",
+      "group": "AI Customer Service & Agents",
+      "what": "AI-human hybrid customer service platform",
+      "total_raised": "$153M",
+      "total_m": 153,
+      "valuation": "$1B",
+      "unicorn": true,
+      "seed_backers": [
+        "Bain Capital Ventures",
+        "Innovation Endeavors"
+      ],
+      "seed_year": 2022,
+      "breakout_year": 2025,
+      "source": "Forbes 2025"
+    },
+    {
+      "name": "OpenEvidence",
+      "group": "Vertical AI (Legal/Health/Finance)",
+      "what": "AI clinical answer engine for physicians",
+      "total_raised": "$265M",
+      "total_m": 265,
+      "valuation": "$3.5B",
+      "unicorn": true,
+      "seed_backers": [
+        "General Catalyst",
+        "Kleiner Perkins"
+      ],
+      "seed_year": 2023,
+      "breakout_year": 2025,
+      "source": "Axios 2025"
+    },
+    {
       "name": "Harvey",
       "group": "Vertical AI (Legal/Health/Finance)",
-      "what": "Generative AI for legal work",
+      "what": "Generative AI platform for law firms",
       "total_raised": "$500M",
       "total_m": 500,
       "valuation": "$5B",
@@ -110,57 +143,37 @@
         "Sequoia Capital"
       ],
       "seed_year": 2022,
-      "breakout_year": 2025,
-      "source": "Bloomberg 2025"
-    },
-    {
-      "name": "Abridge",
-      "group": "Vertical AI (Legal/Health/Finance)",
-      "what": "AI medical documentation for clinicians",
-      "total_raised": "$460M",
-      "total_m": 460,
-      "valuation": "$2.75B",
-      "unicorn": true,
-      "seed_backers": [
-        "Redpoint Ventures",
-        "Lightspeed Venture Partners"
-      ],
-      "seed_year": 2020,
-      "breakout_year": 2025,
-      "source": "Forbes 2025"
-    },
-    {
-      "name": "Hebbia",
-      "group": "Enterprise Search & Ops",
-      "what": "AI search for finance and legal teams",
-      "total_raised": "$260M",
-      "total_m": 260,
-      "valuation": "$700M",
-      "unicorn": false,
-      "seed_backers": [
-        "Google Ventures",
-        "Index Ventures"
-      ],
-      "seed_year": 2020,
       "breakout_year": 2024,
-      "source": "TechCrunch 2024"
+      "source": "The Information 2025"
     },
     {
-      "name": "EvenUp",
-      "group": "Vertical AI (Legal/Health/Finance)",
-      "what": "AI-driven legal claims valuation",
-      "total_raised": "$255M",
-      "total_m": 255,
-      "valuation": "$1B",
+      "name": "Clay",
+      "group": "Enterprise Search & Ops",
+      "what": "AI-driven sales and ops automation",
+      "total_raised": "$150M",
+      "total_m": 150,
+      "valuation": "$3.1B",
       "unicorn": true,
       "seed_backers": [
-        "Bain Capital Ventures",
-        "NEA"
+        "Boldstart Ventures",
+        "Box Group"
       ],
-      "seed_year": 2019,
+      "seed_year": 2018,
       "breakout_year": 2025,
-      "source": "Axios 2025"
+      "source": "TechCrunch 2025"
     }
   ],
-  "deltas": null
+  "deltas": {
+    "since": "2026-07-09T14:12:11.799052+00:00",
+    "companies": 0,
+    "unicorns": 1,
+    "new_names": [
+      "Cognition Labs",
+      "Chainguard",
+      "Together AI",
+      "Crescendo",
+      "OpenEvidence",
+      "Clay"
+    ]
+  }
 }
