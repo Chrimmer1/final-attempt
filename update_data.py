@@ -4,11 +4,13 @@ update_data.py  —  Seed Breakout Map data generator (runs on a schedule)
 
 WHAT IT DOES
   Once per run (GitHub Actions runs it daily) this script:
-    1. Asks Claude to search the web for AI companies that started at seed and
-       have since broken out ($100M+ raised) in roughly the last 12 months.
-    2. Groups them, records early backers and time-to-breakout.
-    3. Compares to yesterday's saved file and computes what changed.
-    4. Writes data/market_data.json — the single source of truth the website reads.
+    1. Asks Claude to find AI companies that started at seed and have since
+       raised $10M+ total in roughly the last 12 months.
+    2. Sorts them into 4 NARROW, use-case-specific categories.
+    3. Records early backers, seed year, and the year they crossed $10M.
+    4. Guarantees a couple of real Glasswing portfolio companies appear.
+    5. Compares to yesterday's saved file and computes what changed.
+    6. Writes data/market_data.json — the single source of truth the site reads.
 
   The WEBSITE never calls Claude. It just displays this file. That is why the
   numbers hold still between updates and only move when the market moves.
@@ -16,6 +18,7 @@ WHAT IT DOES
 REQUIRES
   Environment variable ANTHROPIC_API_KEY (stored as a GitHub Actions secret).
   Optional: RADAR_MODEL (defaults to claude-sonnet-5).
+  Optional: RADAR_WEB_SEARCH (defaults to "1" = ON; set "0" to disable).
 """
 
 import os, re, json, time, urllib.request, urllib.error
@@ -24,28 +27,74 @@ from datetime import datetime, timezone
 HERE = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(HERE, "data", "market_data.json")
 
-GROUPS = ["AI Coding & Dev Tools", "AI Customer Service & Agents", "Cybersecurity",
-          "AI Infrastructure", "Vertical AI (Legal/Health/Finance)",
-          "Enterprise Search & Ops", "Other AI"]
+# ---- FOUR NARROW CATEGORIES ----------------------------------------------
+# Each describes a specific job the software does, so a company either clearly
+# fits or clearly does not. Keep these tight; broad buckets defeat the purpose.
+GROUPS = [
+    "AI Agents for Business Operations",       # finance ops, procurement, RevOps, back-office
+    "Clinical & Healthcare Workflow Automation",  # scribing, prior-auth, pharmacy, care coordination
+    "AI Security Operations (SOC & Threat Response)",  # agentic security, triage, IR/forensics
+    "AI Software Development Agents",           # code gen, autonomous debugging, PR agents
+]
+
+# ---- GUARANTEED GLASSWING PORTFOLIO COMPANIES -----------------------------
+# You asked for at least 2 Glasswing companies to always appear. These are real
+# portfolio companies that fit the categories above. NOTE: Glasswing is a seed
+# first-check investor, so some of these may not have publicly crossed $10M+.
+# They are pinned here regardless and marked glasswing:true. Edit freely.
+# To switch to "strict $10M only" mode, set this list to [] and the script will
+# only include Glasswing companies that the search finds genuinely qualifying.
+GLASSWING_INCLUDE = [
+    {
+        "name": "Asepha",
+        "group": "Clinical & Healthcare Workflow Automation",
+        "what": "agentic pharmacy workflow automation",
+        "total_raised": "n/a",
+        "total_m": 0,
+        "valuation": "n/a",
+        "unicorn": False,
+        "seed_backers": ["Glasswing Ventures"],
+        "seed_year": 2024,
+        "breakout_year": 2026,
+        "source": "Glasswing portfolio, 2026",
+        "glasswing": True,
+    },
+    {
+        "name": "Cydelphi",
+        "group": "AI Security Operations (SOC & Threat Response)",
+        "what": "AI-native digital forensics and incident response",
+        "total_raised": "n/a",
+        "total_m": 0,
+        "valuation": "n/a",
+        "unicorn": False,
+        "seed_backers": ["Glasswing Ventures"],
+        "seed_year": 2025,
+        "breakout_year": 2026,
+        "source": "Glasswing portfolio, 2026",
+        "glasswing": True,
+    },
+]
 
 TODAY = datetime.now(timezone.utc).strftime("%Y-%m-%d")
 
 
 def prompt(focus):
     return f"""You are a market-structure analyst for Glasswing Ventures (early-stage AI-native VC). Today is {TODAY}.
-Find AI companies that STARTED AT SEED and have since BROKEN OUT, defined as having raised $100M+ in TOTAL funding, crossing that threshold within roughly the last 12 months.
+Find AI companies that STARTED AT SEED and have since raised $10M+ in TOTAL funding, crossing that $10M threshold within roughly the last 12 months.
 HARD RULES:
 - AI-core only (the product is fundamentally AI, not "uses some AI").
-- Must have genuinely started with an early/seed round and grown. EXCLUDE companies that launched straight into mega-rounds or were spun out of a large lab with a huge first cheque (e.g. frontier labs).
+- Must have genuinely started with an early/seed round and grown. EXCLUDE only companies that launched straight into $50M+ mega-rounds or were spun out of a large lab with a huge first cheque (e.g. frontier labs).
 - US-weighted; notable global companies allowed.
 - Only include a company you can tie to a real, reported total-funding figure. If unsure, omit it.
+- Fit is STRICT: only include a company if it clearly belongs to one of these narrow categories. If it does not obviously fit one, DROP it (do not force a fit).
 Classify each into EXACTLY ONE group from: {json.dumps(GROUPS)}.
-For each, also give its early/seed backers (1-3 names, the investors who got in at seed/Series A), the year of its seed round (seed_year), and the year it crossed $100M (breakout_year).
+For each, also give its early/seed backers (1-3 names, the investors who got in at seed/Series A), the year of its seed round (seed_year), and the year it crossed $10M (breakout_year).
+If any company is a Glasswing Ventures portfolio company, set "glasswing": true and make sure Glasswing Ventures is listed in seed_backers.
 FOCUS THIS BATCH ON: {focus}.
 Return ONLY JSON, no markdown:
-{{"companies":[{{"name":"","group":"one from the list","what":"under 8 words","total_raised":"$1.2B","total_m":1200,"valuation":"$3B or n/a","unicorn":true,"seed_backers":["Fund A"],"seed_year":2022,"breakout_year":2026,"source":"publication + year"}}]}}
-Give up to 5 companies, most notable first. Keep every string short.
-Answer from your own knowledge of the AI venture market. Do not search.
+{{"companies":[{{"name":"","group":"one from the list","what":"under 8 words","total_raised":"$45M","total_m":45,"valuation":"$200M or n/a","unicorn":false,"seed_backers":["Fund A"],"seed_year":2023,"breakout_year":2026,"glasswing":false,"source":"publication + year"}}]}}
+Give up to 8 companies, most notable first. Keep every string short.
+Use web search to verify funding figures where you can.
 Output ONLY the JSON object. No markdown, no code fences, no text before or after it."""
 
 
@@ -53,9 +102,7 @@ def parse_companies(text):
     """Very tolerant: handles code fences, extra prose, or a cut-off reply."""
     if not text:
         return []
-    # 1) strip markdown code fences if present
     cleaned = re.sub(r"```(?:json)?", "", text).strip()
-    # 2) try to parse the whole object
     for candidate in (cleaned, text):
         try:
             s = candidate.index("{"); e = candidate.rindex("}")
@@ -64,14 +111,12 @@ def parse_companies(text):
                 return o["companies"]
         except Exception:
             pass
-    # 3) try to grab just the companies array
     m = re.search(r'"companies"\s*:\s*(\[.*\])', cleaned, re.S)
     if m:
         try:
             return json.loads(m.group(1))
         except Exception:
             pass
-    # 4) last resort: salvage each complete {...} object that has a "name"
     out = []
     for m in re.finditer(r'\{[^{}]*"name"[^{}]*\}', cleaned, re.S):
         try:
@@ -89,11 +134,10 @@ def ask_claude(focus, retries=3):
         "max_tokens": 8000,
         "messages": [{"role": "user", "content": prompt(focus)}],
     }
-    # Web search is OFF by default (it can exhaust the token budget before the
-    # model writes its answer). Set RADAR_WEB_SEARCH=1 only if you wire it through
-    # the workflow env and know the account supports it.
-    if os.environ.get("RADAR_WEB_SEARCH", "0") == "1":
-        payload["tools"] = [{"type": "web_search_20250305", "name": "web_search", "max_uses": 4}]
+    # Web search defaults ON here because $10M+ companies are smaller and harder
+    # to recall accurately from memory. Set RADAR_WEB_SEARCH=0 to turn it off.
+    if os.environ.get("RADAR_WEB_SEARCH", "1") == "1":
+        payload["tools"] = [{"type": "web_search_20250305", "name": "web_search", "max_uses": 5}]
 
     last = None
     for i in range(retries):
@@ -109,7 +153,6 @@ def ask_claude(focus, retries=3):
             text = "".join(b.get("text", "") for b in data.get("content", []) if b.get("type") == "text")
             companies = parse_companies(text)
             if not companies:
-                # show what came back so an empty result is never a mystery
                 print("  got a reply but parsed 0 companies. stop_reason:",
                       data.get("stop_reason"), "| raw text (first 600 chars):")
                 print("  " + (text[:600].replace("\n", " ") or "<no text block in response>"))
@@ -134,8 +177,18 @@ def ask_claude(focus, retries=3):
 def main():
     print("Generating breakout map…")
     companies = []
-    companies += ask_claude("cybersecurity, AI infrastructure, and AI coding/developer tools")
-    companies += ask_claude("AI customer service & support agents, vertical AI in legal/health/finance, and enterprise search/ops")
+    # One batch per narrow category → up to 8 each, deduped later.
+    companies += ask_claude("AI agents automating business operations: finance ops, procurement, RevOps, and back-office workflows")
+    companies += ask_claude("clinical and healthcare workflow automation: ambient scribing, prior-auth, pharmacy automation, and care coordination")
+    companies += ask_claude("AI security operations: agentic SOC, alert triage, automated threat response, and digital forensics / incident response")
+    companies += ask_claude("AI software development agents: code generation, autonomous debugging, and pull-request agents")
+
+    # Pin the guaranteed Glasswing companies first so they survive dedupe.
+    companies = GLASSWING_INCLUDE + companies
+
+    # Drop anything that did not land in one of our narrow categories.
+    valid = set(GROUPS)
+    companies = [c for c in companies if (c.get("group") or "") in valid]
 
     # dedupe by name
     seen, deduped = set(), []
