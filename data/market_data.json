@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-10T18:11:08.755875+00:00",
+  "generated_at": "2026-07-11T14:44:27.297141+00:00",
   "companies": [
     {
       "name": "Asepha",
@@ -36,104 +36,98 @@
     {
       "name": "Lio (askLio)",
       "group": "AI Agents for Business Operations",
-      "what": "AI agents execute enterprise procurement workflows",
+      "what": "AI agents automate enterprise procurement workflows",
       "total_raised": "$33M",
       "total_m": 33,
       "valuation": "n/a",
       "unicorn": false,
       "seed_backers": [
         "Y Combinator",
-        "SV Angels",
-        "Andreessen Horowitz"
+        "Pioneer Fund"
       ],
       "seed_year": 2023,
       "breakout_year": 2026,
       "glasswing": false,
-      "source": "TechCrunch 2026; IndexBox 2026"
+      "source": "TechCrunch/PRNewswire 2026"
     },
     {
       "name": "Fazeshift",
       "group": "AI Agents for Business Operations",
-      "what": "AI agents automate accounts receivable, collections",
+      "what": "AI agents automate accounts receivable collections",
       "total_raised": "$22M",
       "total_m": 22,
       "valuation": "n/a",
       "unicorn": false,
       "seed_backers": [
-        "Gradient Ventures",
         "Y Combinator",
-        "F-Prime"
+        "Gradient Ventures"
       ],
-      "seed_year": 2025,
+      "seed_year": 2023,
       "breakout_year": 2026,
       "glasswing": false,
-      "source": "Businesswire 2026; Accounting VC Substack 2026"
+      "source": "Crunchbase News 2026"
     },
     {
-      "name": "Freed",
-      "group": "Clinical & Healthcare Workflow Automation",
-      "what": "AI ambient scribe for independent clinicians",
-      "total_raised": "$30M",
-      "total_m": 30,
+      "name": "Coverbase",
+      "group": "AI Agents for Business Operations",
+      "what": "AI agents automate vendor procurement risk",
+      "total_raised": "$20M",
+      "total_m": 20,
       "valuation": "n/a",
       "unicorn": false,
       "seed_backers": [
-        "Sequoia Capital",
-        "Scale Venture Partners"
+        "Fika Ventures",
+        "Pear VC"
       ],
-      "seed_year": 2022,
+      "seed_year": 2024,
       "breakout_year": 2025,
       "glasswing": false,
-      "source": "CNBC, 2025"
+      "source": "Crunchbase News 2025"
     },
     {
-      "name": "Ethermed",
-      "group": "Clinical & Healthcare Workflow Automation",
-      "what": "AI automates prior authorization for health systems",
-      "total_raised": "$15M",
-      "total_m": 15,
+      "name": "Greptile",
+      "group": "AI Software Development Agents",
+      "what": "AI code review agent for pull requests",
+      "total_raised": "$29M",
+      "total_m": 29,
       "valuation": "n/a",
       "unicorn": false,
       "seed_backers": [
-        "Enfield Capital Partners",
-        "Blue Marlin Partners",
-        "Jumpstart Ventures"
+        "Initialized Capital",
+        "Y Combinator"
       ],
       "seed_year": 2024,
-      "breakout_year": 2026,
+      "breakout_year": 2025,
       "glasswing": false,
-      "source": "EIN Presswire, 2026"
+      "source": "SiliconANGLE 2025"
     },
     {
-      "name": "Enzo Health",
-      "group": "Clinical & Healthcare Workflow Automation",
-      "what": "AI platform automating home health care coordination",
-      "total_raised": "$26M",
-      "total_m": 26,
+      "name": "All Hands AI (OpenHands)",
+      "group": "AI Software Development Agents",
+      "what": "Open-source autonomous coding & debugging agent",
+      "total_raised": "$23.8M",
+      "total_m": 23.8,
       "valuation": "n/a",
       "unicorn": false,
       "seed_backers": [
-        "Gradient",
-        "Tandem Ventures",
-        "Rigby Watts"
+        "Menlo Ventures",
+        "Pillar VC",
+        "Betaworks"
       ],
       "seed_year": 2024,
-      "breakout_year": 2026,
+      "breakout_year": 2025,
       "glasswing": false,
-      "source": "Home Health Care News, 2026"
+      "source": "TechCrunch 2024; Tracxn 2025"
     }
   ],
   "deltas": {
-    "since": "2026-07-10T17:32:24.827380+00:00",
-    "companies": -3,
-    "unicorns": -10,
+    "since": "2026-07-10T18:11:08.755875+00:00",
+    "companies": 0,
+    "unicorns": 0,
     "new_names": [
-      "Asepha",
-      "Cydelphi",
-      "Lio (askLio)",
-      "Fazeshift",
-      "Freed",
-      "Ethermed"
+      "Coverbase",
+      "Greptile",
+      "All Hands AI (OpenHands)"
     ]
   }
 }
