@@ -111,7 +111,7 @@ def ask_claude(group, focus, examples, retries=3):
     model = os.environ.get("RADAR_MODEL", "claude-sonnet-5")
     payload = {
         "model": model,
-        "max_tokens": 16000,
+        "max_tokens": 12000,
         "messages": [{"role": "user", "content": prompt(group, focus, examples)}],
     }
     if os.environ.get("RADAR_WEB_SEARCH", "1") == "1":
@@ -126,7 +126,7 @@ def ask_claude(group, focus, examples, retries=3):
                 headers={"content-type": "application/json", "x-api-key": key,
                          "anthropic-version": "2023-06-01"},
             )
-            with urllib.request.urlopen(req, timeout=180) as r:
+            with urllib.request.urlopen(req, timeout=300) as r:
                 data = json.load(r)
             text = "".join(b.get("text", "") for b in data.get("content", []) if b.get("type") == "text")
             companies = parse_companies(text)
