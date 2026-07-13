@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-07-12T14:50:23.537445+00:00",
+  "generated_at": "2026-07-13T13:30:12.195955+00:00",
   "companies": [
     {
       "name": "Asepha",
-      "group": "Clinical & Healthcare Workflow Automation",
+      "group": "Healthcare & Life Sciences AI",
       "what": "agentic pharmacy workflow automation",
       "total_raised": "n/a",
       "total_m": 0,
@@ -18,9 +18,9 @@
       "glasswing": true
     },
     {
-      "name": "Cydelphi",
-      "group": "AI Security Operations (SOC & Threat Response)",
-      "what": "AI-native digital forensics and incident response",
+      "name": "Allure Security",
+      "group": "Cybersecurity & Fraud Defense",
+      "what": "AI brand-impersonation and fraud defense",
       "total_raised": "n/a",
       "total_m": 0,
       "valuation": "n/a",
@@ -28,32 +28,65 @@
       "seed_backers": [
         "Glasswing Ventures"
       ],
-      "seed_year": 2025,
+      "seed_year": 2020,
       "breakout_year": 2026,
       "source": "Glasswing portfolio, 2026",
       "glasswing": true
     },
     {
-      "name": "Anterior",
-      "group": "Clinical & Healthcare Workflow Automation",
-      "what": "AI clinical co-pilot for payer prior authorization",
-      "total_raised": "$64M",
-      "total_m": 64,
+      "name": "Basetwo AI",
+      "group": "Industrial & Operations AI",
+      "what": "AI for manufacturing process optimization",
+      "total_raised": "n/a",
+      "total_m": 0,
       "valuation": "n/a",
       "unicorn": false,
       "seed_backers": [
-        "Sequoia Capital",
-        "Neo"
+        "Glasswing Ventures"
+      ],
+      "seed_year": 2022,
+      "breakout_year": 2026,
+      "source": "Glasswing portfolio, 2026",
+      "glasswing": true
+    },
+    {
+      "name": "DTwo",
+      "group": "Data & Enterprise Intelligence AI",
+      "what": "enterprise data intelligence platform",
+      "total_raised": "n/a",
+      "total_m": 0,
+      "valuation": "n/a",
+      "unicorn": false,
+      "seed_backers": [
+        "Glasswing Ventures"
       ],
       "seed_year": 2023,
-      "breakout_year": 2024,
+      "breakout_year": 2026,
+      "source": "Glasswing portfolio, 2026",
+      "glasswing": true
+    },
+    {
+      "name": "Amperos Health",
+      "group": "Healthcare & Life Sciences AI",
+      "what": "AI biller for denial management/RCM",
+      "total_raised": "$20.2M",
+      "total_m": 20.2,
+      "valuation": "n/a",
+      "unicorn": false,
+      "seed_backers": [
+        "Uncork Capital",
+        "Neo",
+        "Nebular"
+      ],
+      "seed_year": 2025,
+      "breakout_year": 2026,
       "glasswing": false,
-      "source": "TechCrunch 2024; MedCity News 2026"
+      "source": "Fierce Healthcare, Apr 2026"
     },
     {
       "name": "Enzo Health",
-      "group": "Clinical & Healthcare Workflow Automation",
-      "what": "AI platform automating home health care coordination",
+      "group": "Healthcare & Life Sciences AI",
+      "what": "AI platform for home health/post-acute ops",
       "total_raised": "$26M",
       "total_m": 26,
       "valuation": "n/a",
@@ -66,71 +99,176 @@
       "seed_year": 2024,
       "breakout_year": 2026,
       "glasswing": false,
-      "source": "Home Health Care News, May 2026"
+      "source": "PR Newswire, May 2026"
     },
     {
-      "name": "Queue",
-      "group": "Clinical & Healthcare Workflow Automation",
-      "what": "Autonomous robotic pharmacy for prescriptions",
-      "total_raised": "$12.6M",
-      "total_m": 12.6,
+      "name": "Anterior",
+      "group": "Healthcare & Life Sciences AI",
+      "what": "Clinician-led AI for payer prior-auth workflows",
+      "total_raised": "$64M",
+      "total_m": 64,
       "valuation": "n/a",
       "unicorn": false,
       "seed_backers": [
-        "AlleyCorp"
+        "Sequoia Capital",
+        "Anamcara Capital",
+        "ODDBIRD VC"
+      ],
+      "seed_year": 2023,
+      "breakout_year": 2024,
+      "glasswing": false,
+      "source": "MedCity News, Feb 2026"
+    },
+    {
+      "name": "Cohere Health",
+      "group": "Healthcare & Life Sciences AI",
+      "what": "AI-powered prior authorization for health plans",
+      "total_raised": "$213M",
+      "total_m": 213,
+      "valuation": "$5.5B",
+      "unicorn": true,
+      "seed_backers": [
+        "Flare Capital Partners",
+        "Polaris Partners"
+      ],
+      "seed_year": 2019,
+      "breakout_year": 2020,
+      "glasswing": false,
+      "source": "PR Newswire, May 2025"
+    },
+    {
+      "name": "A Security",
+      "group": "Cybersecurity & Fraud Defense",
+      "what": "AI-powered cybersecurity defense platform",
+      "total_raised": "$37M",
+      "total_m": 37,
+      "valuation": "n/a",
+      "unicorn": false,
+      "seed_backers": [
+        "Cyberstarts",
+        "Lightspeed",
+        "Assaf Rappaport"
+      ],
+      "seed_year": 2025,
+      "breakout_year": 2026,
+      "glasswing": false,
+      "source": "TheSaaSNews, June 2026"
+    },
+    {
+      "name": "JetStream Security",
+      "group": "Cybersecurity & Fraud Defense",
+      "what": "AI governance & runtime threat visibility platform",
+      "total_raised": "$34M",
+      "total_m": 34,
+      "valuation": "n/a",
+      "unicorn": false,
+      "seed_backers": [
+        "Redpoint Ventures",
+        "CrowdStrike Falcon Fund",
+        "George Kurtz"
       ],
       "seed_year": 2026,
       "breakout_year": 2026,
       "glasswing": false,
-      "source": "The AI Insider, June 2026"
+      "source": "SecurityWeek, March 2026"
     },
     {
-      "name": "Exaforce",
-      "group": "AI Security Operations (SOC & Threat Response)",
-      "what": "Agentic SOC platform with security knowledge graph",
-      "total_raised": "$263M",
-      "total_m": 263,
-      "valuation": "$725M",
+      "name": "imper.ai",
+      "group": "Cybersecurity & Fraud Defense",
+      "what": "Real-time deepfake & CEO-fraud impersonation prevention",
+      "total_raised": "$28M",
+      "total_m": 28,
+      "valuation": "n/a",
       "unicorn": false,
       "seed_backers": [
-        "Khosla Ventures",
-        "Mayfield",
-        "Thomvest Ventures"
-      ],
-      "seed_year": 2023,
-      "breakout_year": 2025,
-      "glasswing": false,
-      "source": "SiliconANGLE, Crunchbase News 2025-2026"
-    },
-    {
-      "name": "7AI",
-      "group": "AI Security Operations (SOC & Threat Response)",
-      "what": "Autonomous AI agents for security investigations",
-      "total_raised": "$166M",
-      "total_m": 166,
-      "valuation": "$700M",
-      "unicorn": false,
-      "seed_backers": [
-        "Greylock",
-        "CRV",
-        "Spark Capital"
+        "YL Ventures",
+        "Mayfield Fund",
+        "Hetz Ventures"
       ],
       "seed_year": 2024,
-      "breakout_year": 2024,
+      "breakout_year": 2025,
       "glasswing": false,
-      "source": "7AI blog, Calcalistech 2025"
+      "source": "Wellows tech startups 2026 report"
+    },
+    {
+      "name": "Spectrum Security",
+      "group": "Cybersecurity & Fraud Defense",
+      "what": "Automated real-time threat-detection authoring platform",
+      "total_raised": "$19M",
+      "total_m": 19,
+      "valuation": "n/a",
+      "unicorn": false,
+      "seed_backers": [
+        "TechOperators",
+        "WhiteRabbit Ventures",
+        "Skinos Ventures"
+      ],
+      "seed_year": 2026,
+      "breakout_year": 2026,
+      "glasswing": false,
+      "source": "FinTech Global, April 2026"
+    },
+    {
+      "name": "Limitless Labs",
+      "group": "Industrial & Operations AI",
+      "what": "AI agent automates CNC machining programming",
+      "total_raised": "$27.3M",
+      "total_m": 27,
+      "valuation": "n/a",
+      "unicorn": false,
+      "seed_backers": [
+        "Grove Ventures"
+      ],
+      "seed_year": 2025,
+      "breakout_year": 2026,
+      "glasswing": false,
+      "source": "SiliconANGLE, 2026"
+    },
+    {
+      "name": "Rebar",
+      "group": "Industrial & Operations AI",
+      "what": "AI quoting platform for HVAC suppliers",
+      "total_raised": "$14M",
+      "total_m": 14,
+      "valuation": "n/a",
+      "unicorn": false,
+      "seed_backers": [
+        "Founder Collective",
+        "Villain Capital"
+      ],
+      "seed_year": 2024,
+      "breakout_year": 2026,
+      "glasswing": false,
+      "source": "Crunchbase News, 2026"
+    },
+    {
+      "name": "Roadrunner",
+      "group": "Industrial & Operations AI",
+      "what": "AI-native quote-to-cash revenue infrastructure",
+      "total_raised": "$27M",
+      "total_m": 27,
+      "valuation": "n/a",
+      "unicorn": false,
+      "seed_backers": [
+        "Kleiner Perkins"
+      ],
+      "seed_year": 2025,
+      "breakout_year": 2026,
+      "glasswing": false,
+      "source": "Fortune, 2026"
     }
   ],
   "deltas": {
-    "since": "2026-07-11T14:44:27.297141+00:00",
-    "companies": 0,
-    "unicorns": 0,
+    "since": "2026-07-12T14:50:23.537445+00:00",
+    "companies": 8,
+    "unicorns": 1,
     "new_names": [
-      "Anterior",
-      "Enzo Health",
-      "Queue",
-      "Exaforce",
-      "7AI"
+      "Allure Security",
+      "Basetwo AI",
+      "DTwo",
+      "Amperos Health",
+      "Cohere Health",
+      "A Security"
     ]
   }
 }
