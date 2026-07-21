@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-20T16:24:06.435176+00:00",
+  "generated_at": "2026-07-21T16:12:43.510203+00:00",
   "companies": [
     {
       "name": "Asepha",
@@ -66,45 +66,9 @@
       "glasswing": true
     },
     {
-      "name": "Latent Health",
-      "group": "Healthcare & Life Sciences AI",
-      "what": "AI engine automating prior authorization/medication access",
-      "total_raised": "$80M",
-      "total_m": 80,
-      "valuation": "$600M",
-      "unicorn": false,
-      "seed_backers": [
-        "Y Combinator",
-        "Conviction",
-        "General Catalyst"
-      ],
-      "seed_year": 2023,
-      "breakout_year": 2026,
-      "glasswing": false,
-      "source": "Forbes/BusinessWire 2026"
-    },
-    {
-      "name": "Enzo Health",
-      "group": "Healthcare & Life Sciences AI",
-      "what": "AI platform for home health operations",
-      "total_raised": "$26M",
-      "total_m": 26,
-      "valuation": "n/a",
-      "unicorn": false,
-      "seed_backers": [
-        "Gradient",
-        "Tandem Ventures",
-        "Rigby Watts"
-      ],
-      "seed_year": 2024,
-      "breakout_year": 2026,
-      "glasswing": false,
-      "source": "PRNewswire 2026"
-    },
-    {
       "name": "Amperos Health",
       "group": "Healthcare & Life Sciences AI",
-      "what": "AI biller for denials and revenue recovery",
+      "what": "AI biller automating insurance denial recovery",
       "total_raised": "$20.2M",
       "total_m": 20.2,
       "valuation": "n/a",
@@ -117,12 +81,48 @@
       "seed_year": 2025,
       "breakout_year": 2026,
       "glasswing": false,
-      "source": "Fierce Healthcare 2026"
+      "source": "Fierce Healthcare, 2026"
+    },
+    {
+      "name": "Enzo Health",
+      "group": "Healthcare & Life Sciences AI",
+      "what": "AI platform for home health & post-acute ops",
+      "total_raised": "$26M",
+      "total_m": 26,
+      "valuation": "n/a",
+      "unicorn": false,
+      "seed_backers": [
+        "Gradient",
+        "Tandem Ventures",
+        "Rigby Watts"
+      ],
+      "seed_year": 2024,
+      "breakout_year": 2026,
+      "glasswing": false,
+      "source": "PR Newswire, 2026"
+    },
+    {
+      "name": "Keebler Health",
+      "group": "Healthcare & Life Sciences AI",
+      "what": "LLM-native risk-adjustment platform for VBC",
+      "total_raised": "$23M",
+      "total_m": 23,
+      "valuation": "n/a",
+      "unicorn": false,
+      "seed_backers": [
+        "Freestyle Capital",
+        "New Stack Ventures",
+        "MBX Capital"
+      ],
+      "seed_year": 2025,
+      "breakout_year": 2026,
+      "glasswing": false,
+      "source": "Fierce Healthcare, 2026"
     },
     {
       "name": "A Security",
       "group": "Cybersecurity & Fraud Defense",
-      "what": "AI agents detecting weaponized AI attacks",
+      "what": "AI agents defend vs autonomous cyberattacks",
       "total_raised": "$37M",
       "total_m": 37,
       "valuation": "n/a",
@@ -134,12 +134,12 @@
       "seed_year": 2025,
       "breakout_year": 2026,
       "glasswing": false,
-      "source": "TheSaaSNews/Calcalist, June 2026"
+      "source": "SaaS News, June 2026"
     },
     {
       "name": "JetStream Security",
       "group": "Cybersecurity & Fraud Defense",
-      "what": "AI governance visibility for enterprise agents",
+      "what": "AI governance & agentic identity visibility platform",
       "total_raised": "$34M",
       "total_m": 34,
       "valuation": "n/a",
@@ -154,21 +154,72 @@
       "source": "SecurityWeek, March 2026"
     },
     {
-      "name": "Geordie AI",
+      "name": "Fig Security",
       "group": "Cybersecurity & Fraud Defense",
-      "what": "Threat detection and governance for AI agents",
-      "total_raised": "$36.5M",
-      "total_m": 36.5,
-      "valuation": "$180M",
+      "what": "monitors SecOps stack for detection breakdowns",
+      "total_raised": "$38M",
+      "total_m": 38,
+      "valuation": "n/a",
       "unicorn": false,
       "seed_backers": [
-        "General Catalyst",
+        "Team8",
         "Ten Eleven Ventures"
       ],
       "seed_year": 2025,
       "breakout_year": 2026,
       "glasswing": false,
-      "source": "Fortune, May 2026"
+      "source": "TechCrunch, March 2026"
+    },
+    {
+      "name": "Beacon Security",
+      "group": "Cybersecurity & Fraud Defense",
+      "what": "data layer for agentic threat detection & response",
+      "total_raised": "$13M",
+      "total_m": 13,
+      "valuation": "n/a",
+      "unicorn": false,
+      "seed_backers": [
+        "Notable Capital",
+        "Holly Ventures"
+      ],
+      "seed_year": 2026,
+      "breakout_year": 2026,
+      "glasswing": false,
+      "source": "PR Newswire, July 2026"
+    },
+    {
+      "name": "Ray Security",
+      "group": "Cybersecurity & Fraud Defense",
+      "what": "predictive AI platform for real-time data protection",
+      "total_raised": "$11M",
+      "total_m": 11,
+      "valuation": "n/a",
+      "unicorn": false,
+      "seed_backers": [
+        "Venture Guides",
+        "Ibex Investors"
+      ],
+      "seed_year": 2024,
+      "breakout_year": 2025,
+      "glasswing": false,
+      "source": "SecurityWeek, Sept 2025"
+    },
+    {
+      "name": "Trent AI",
+      "group": "Cybersecurity & Fraud Defense",
+      "what": "AI agents scan AI code for vulnerabilities",
+      "total_raised": "$13M",
+      "total_m": 13,
+      "valuation": "n/a",
+      "unicorn": false,
+      "seed_backers": [
+        "LocalGlobe",
+        "Cambridge Innovation Capital"
+      ],
+      "seed_year": 2026,
+      "breakout_year": 2026,
+      "glasswing": false,
+      "source": "SC Media, April 2026"
     },
     {
       "name": "Limitless Labs",
@@ -186,19 +237,69 @@
       "seed_year": 2024,
       "breakout_year": 2026,
       "glasswing": false,
-      "source": "PR Newswire + AIwire, June 2026"
+      "source": "AIwire, June 2026"
+    },
+    {
+      "name": "Octup",
+      "group": "Industrial & Operations AI",
+      "what": "AI operations platform for 3PL logistics",
+      "total_raised": "$12M",
+      "total_m": 12,
+      "valuation": "n/a",
+      "unicorn": false,
+      "seed_backers": [
+        "Shine Capital",
+        "JAL Ventures"
+      ],
+      "seed_year": 2025,
+      "breakout_year": 2025,
+      "glasswing": false,
+      "source": "FreightWaves, 2025"
+    },
+    {
+      "name": "Humble Robotics",
+      "group": "Industrial & Operations AI",
+      "what": "Autonomous electric trucks for freight hauling",
+      "total_raised": "$24M",
+      "total_m": 24,
+      "valuation": "n/a",
+      "unicorn": false,
+      "seed_backers": [
+        "Eclipse",
+        "Energy Impact Partners"
+      ],
+      "seed_year": 2026,
+      "breakout_year": 2026,
+      "glasswing": false,
+      "source": "FinSMEs, April 2026"
+    },
+    {
+      "name": "Scope",
+      "group": "Industrial & Operations AI",
+      "what": "AI workflow platform for industrial inspections",
+      "total_raised": "$20M",
+      "total_m": 20,
+      "valuation": "n/a",
+      "unicorn": false,
+      "seed_backers": [
+        "Susa Ventures",
+        "Entrepreneurs First"
+      ],
+      "seed_year": 2023,
+      "breakout_year": 2026,
+      "glasswing": false,
+      "source": "EU-Startups, May 2026"
     },
     {
       "name": "Rebar",
       "group": "Industrial & Operations AI",
-      "what": "AI quoting platform for HVAC suppliers",
+      "what": "AI quoting for HVAC and construction suppliers",
       "total_raised": "$14M",
       "total_m": 14,
       "valuation": "n/a",
       "unicorn": false,
       "seed_backers": [
-        "Founder Collective",
-        "Zero Infinity Partners"
+        "Founder Collective"
       ],
       "seed_year": 2024,
       "breakout_year": 2026,
@@ -207,14 +308,16 @@
     }
   ],
   "deltas": {
-    "since": "2026-07-19T14:50:38.428256+00:00",
-    "companies": 2,
+    "since": "2026-07-20T16:24:06.435176+00:00",
+    "companies": 6,
     "unicorns": 0,
     "new_names": [
-      "Latent Health",
-      "A Security",
-      "JetStream Security",
-      "Geordie AI"
+      "Keebler Health",
+      "Fig Security",
+      "Beacon Security",
+      "Ray Security",
+      "Trent AI",
+      "Octup"
     ]
   }
 }
