@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-22T16:17:29.982574+00:00",
+  "generated_at": "2026-07-23T16:23:40.514211+00:00",
   "companies": [
     {
       "name": "Asepha",
@@ -68,9 +68,9 @@
     {
       "name": "Amperos Health",
       "group": "Healthcare & Life Sciences AI",
-      "what": "AI biller automates insurance claim denials",
-      "total_raised": "$21M",
-      "total_m": 21,
+      "what": "AI biller automating insurance denial recovery",
+      "total_raised": "$20.2M",
+      "total_m": 20,
       "valuation": "n/a",
       "unicorn": false,
       "seed_backers": [
@@ -86,7 +86,7 @@
     {
       "name": "Enzo Health",
       "group": "Healthcare & Life Sciences AI",
-      "what": "AI platform automates home health workflows",
+      "what": "AI platform automating home health operations",
       "total_raised": "$26M",
       "total_m": 26,
       "valuation": "n/a",
@@ -102,137 +102,135 @@
       "source": "PR Newswire, 2026"
     },
     {
-      "name": "Tandem Health",
+      "name": "Ascertain",
       "group": "Healthcare & Life Sciences AI",
-      "what": "AI scribe automates clinical documentation notes",
-      "total_raised": "$59.5M",
-      "total_m": 59.5,
+      "what": "Agentic AI case management for health systems",
+      "total_raised": "$17.4M",
+      "total_m": 17,
       "valuation": "n/a",
       "unicorn": false,
       "seed_backers": [
-        "Northzone",
-        "OpenAI"
-      ],
-      "seed_year": 2024,
-      "breakout_year": 2025,
-      "glasswing": false,
-      "source": "Sifted, 2025"
-    },
-    {
-      "name": "Knit Health",
-      "group": "Healthcare & Life Sciences AI",
-      "what": "AI clinical behavior model optimizes care ops",
-      "total_raised": "$11.6M",
-      "total_m": 11.6,
-      "valuation": "n/a",
-      "unicorn": false,
-      "seed_backers": [
-        "Moxxie Ventures",
-        "Coalition Operators"
-      ],
-      "seed_year": 2026,
-      "breakout_year": 2026,
-      "glasswing": false,
-      "source": "Fierce Healthcare, 2026"
-    },
-    {
-      "name": "Doppel",
-      "group": "Cybersecurity & Fraud Defense",
-      "what": "AI-native social engineering & fraud defense",
-      "total_raised": "$124M",
-      "total_m": 124,
-      "valuation": "$600M+",
-      "unicorn": false,
-      "seed_backers": [
-        "South Park Commons",
-        "Script Capital",
-        "Andreessen Horowitz"
-      ],
-      "seed_year": 2021,
-      "breakout_year": 2025,
-      "glasswing": false,
-      "source": "SecurityWeek/Doppel PR 2025"
-    },
-    {
-      "name": "Reality Defender",
-      "group": "Cybersecurity & Fraud Defense",
-      "what": "AI deepfake & synthetic-media fraud detection",
-      "total_raised": "$52M",
-      "total_m": 52,
-      "valuation": "n/a",
-      "unicorn": false,
-      "seed_backers": [
-        "DCVC",
-        "Y Combinator",
-        "Partnership Fund for NYC"
-      ],
-      "seed_year": 2021,
-      "breakout_year": 2025,
-      "glasswing": false,
-      "source": "Tracxn/PRNewswire 2024-25"
-    },
-    {
-      "name": "Dropzone AI",
-      "group": "Cybersecurity & Fraud Defense",
-      "what": "Autonomous AI SOC analyst for alert triage",
-      "total_raised": "$57M",
-      "total_m": 57,
-      "valuation": "$207M",
-      "unicorn": false,
-      "seed_backers": [
-        "Decibel Partners",
-        "Pioneer Square Labs",
-        "In-Q-Tel"
+        "Aegis Ventures",
+        "Northwell Holdings"
       ],
       "seed_year": 2023,
       "breakout_year": 2025,
       "glasswing": false,
-      "source": "Tracxn/checkthat.ai 2026"
+      "source": "PitchBook, 2026"
+    },
+    {
+      "name": "Reality Defender",
+      "group": "Cybersecurity & Fraud Defense",
+      "what": "AI deepfake and fraud media detection",
+      "total_raised": "$52.4M",
+      "total_m": 52,
+      "valuation": "n/a",
+      "unicorn": false,
+      "seed_backers": [
+        "Y Combinator",
+        "DCVC",
+        "Partnership Fund for NYC"
+      ],
+      "seed_year": 2023,
+      "breakout_year": 2024,
+      "glasswing": false,
+      "source": "Tracxn/PRNewswire 2024"
+    },
+    {
+      "name": "Trustmi",
+      "group": "Cybersecurity & Fraud Defense",
+      "what": "AI payment fraud and social-engineering defense",
+      "total_raised": "$21M",
+      "total_m": 21,
+      "valuation": "n/a",
+      "unicorn": false,
+      "seed_backers": [
+        "Cyberstarts",
+        "Zeev Ventures"
+      ],
+      "seed_year": 2021,
+      "breakout_year": 2023,
+      "glasswing": false,
+      "source": "TechCrunch 2023"
+    },
+    {
+      "name": "Resemble AI",
+      "group": "Cybersecurity & Fraud Defense",
+      "what": "Real-time AI voice/video deepfake threat detection",
+      "total_raised": "$25M",
+      "total_m": 25,
+      "valuation": "n/a",
+      "unicorn": false,
+      "seed_backers": [
+        "Google AI Futures Fund",
+        "Okta Ventures",
+        "Taiwania Capital"
+      ],
+      "seed_year": 2018,
+      "breakout_year": 2025,
+      "glasswing": false,
+      "source": "AIBusiness Dec 2025"
+    },
+    {
+      "name": "Chargeflow",
+      "group": "Cybersecurity & Fraud Defense",
+      "what": "AI chargeback and dispute fraud automation",
+      "total_raised": "$49M",
+      "total_m": 49,
+      "valuation": "n/a",
+      "unicorn": false,
+      "seed_backers": [
+        "Undisclosed seed investors"
+      ],
+      "seed_year": 2021,
+      "breakout_year": 2023,
+      "glasswing": false,
+      "source": "Landbase 2026"
     },
     {
       "name": "Limitless Labs",
       "group": "Industrial & Operations AI",
-      "what": "Agentic AI for CNC/CAD-CAM manufacturing",
-      "total_raised": "$27.3M",
-      "total_m": 27.3,
+      "what": "AI agent automates CNC manufacturing programming",
+      "total_raised": "$20M+",
+      "total_m": 20,
       "valuation": "n/a",
       "unicorn": false,
       "seed_backers": [
-        "Grove Ventures"
+        "Grove Ventures",
+        "Meron Capital"
       ],
-      "seed_year": 2025,
+      "seed_year": 2024,
       "breakout_year": 2026,
       "glasswing": false,
-      "source": "SiliconANGLE, citybiz 2026"
+      "source": "Ctech/vcnewsdaily 2026"
     },
     {
       "name": "Rebar",
       "group": "Industrial & Operations AI",
-      "what": "AI quoting engine for HVAC suppliers",
+      "what": "AI computer vision for HVAC quoting",
       "total_raised": "$14M",
       "total_m": 14,
       "valuation": "n/a",
       "unicorn": false,
       "seed_backers": [
         "Founder Collective",
-        "Optimist Ventures"
+        "Zero Infinity Partners"
       ],
       "seed_year": 2024,
       "breakout_year": 2026,
       "glasswing": false,
-      "source": "Crunchbase News, FinSMEs 2026"
+      "source": "Crunchbase News/Businesswire 2026"
     }
   ],
   "deltas": {
-    "since": "2026-07-21T16:12:43.510203+00:00",
-    "companies": -5,
+    "since": "2026-07-22T16:17:29.982574+00:00",
+    "companies": 0,
     "unicorns": 0,
     "new_names": [
-      "Tandem Health",
-      "Knit Health",
-      "Doppel",
-      "Reality Defender",
-      "Dropzone AI"
+      "Ascertain",
+      "Trustmi",
+      "Resemble AI",
+      "Chargeflow"
     ]
   }
 }
